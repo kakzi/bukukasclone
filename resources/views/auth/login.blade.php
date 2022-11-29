@@ -1,14 +1,14 @@
 <x-guest-layout>
 
     <div id="auth-left">
-        <div class="auth-logo">
-            <a href="index.html"><img src="{{ asset('/images/logo/logo.png') }}" alt="Logo"></a>
-        </div>
-        <h1 class="auth-title">Log in.</h1>
-        <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>
+        <a href="index.html"><img class="mb-5" width="50%" src="{{ asset('/images/logo/logo.png') }}" alt="Logo"></a>
+        {{-- <div class="auth-logo">
+        </div> --}}
+        <p class="mb-3">LOGIN</p>
+        <p class="mb-3">Log in with your data that you entered during registration.</p>
 
         @if (session('status'))
-        <div class="mb-4 font-medium text-sm text-green-600">
+        <div class="mb-1 font-small text-sm text-green-600">
             {{ session('status') }}
         </div>
         @endif
@@ -19,38 +19,36 @@
         @endif
         <form action="{{ route('login') }}" method="POST">
             @csrf
-            <div class="form-group position-relative has-icon-left mb-4">
-                <input class="form-control form-control-xl" type="email" name="email" placeholder="Email"
+            <div class="form-group position-relative has-icon-left mt-4 mb-4">
+                <input class="form-control form-control-md" type="email" name="email" placeholder="Email"
                     value="{{ old('email') }}">
                 <div class="form-control-icon">
                     <i class="bi bi-person"></i>
                 </div>
             </div>
             <div class="form-group position-relative has-icon-left mb-4">
-                <input type="password" class="form-control form-control-xl" name="password" placeholder="Password"
+                <input type="password" class="form-control form-control-md" name="password" placeholder="Password"
                     placeholder="Password">
                 <div class="form-control-icon">
                     <i class="bi bi-shield-lock"></i>
                 </div>
             </div>
-            <div class="form-check form-check-lg d-flex align-items-end">
+            {{-- <div class="form-check form-check-lg d-flex align-items-end">
                 <input class="form-check-input me-2" type="checkbox" name="remember" id="flexCheckDefault">
                 <label class="form-check-label text-gray-600" for="flexCheckDefault">
                     Keep me logged in
                 </label>
-            </div>
-            <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
+            </div> --}}
+            <button class="btn btn-primary btn-block btn-md shadow-md mt-2">Log in</button>
         </form>
-        <div class="text-center mt-5 text-lg fs-4">
-            @if (Route::has('register'))
-            <p class="text-gray-600">Don't have an account? <a href="{{route('register')}}" class="font-bold">Sign
-                    up</a>.</p>
-            @endif
+        @if (Route::has('register'))
+        <p class="text-gray-600 mt-3">Don't have an account? <a href="{{route('register')}}">Sign
+                up</a>.</p>
+        @endif
 
 
-            @if (Route::has('password.request'))
-            <p><a class="font-bold" href="{{route('password.request')}}">Forgot password?</a>.</p>
-            @endif
-        </div>
+        @if (Route::has('password.request'))
+        <p class="mt-1"><a  href="{{route('password.request')}}">Forgot password?</a>.</p>
+        @endif
     </div>
 </x-guest-layout>

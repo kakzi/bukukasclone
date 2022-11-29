@@ -15,7 +15,9 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
-            return route('login');
+            // if token is expired will be redirect in this Route
+            // forbidden route in controller AuthController
+            return route('forbidden');
         }
     }
 }
