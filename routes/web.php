@@ -23,7 +23,9 @@ use App\Http\Controllers\WhatsAppController;
 Route::get('/', function () {
     return view('auth.login');
 });
-Route::get('/forbidden', [AuthController::class, 'forbidden'])->name('forbidden');
+Route::get('/forbidden', function () {
+    return view('auth.login');
+});
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
@@ -39,9 +41,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Route::resource('/tag', 'TagsController');
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    
+
     // More routes here
-    
+
 });
 
 
